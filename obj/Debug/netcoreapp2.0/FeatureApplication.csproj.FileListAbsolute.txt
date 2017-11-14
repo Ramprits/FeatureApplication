@@ -1,0 +1,10 @@
+c:\Users\R1163213\Downloads\FeatureApplication\bin\Debug\netcoreapp2.0\FeatureApplication.deps.json
+c:\Users\R1163213\Downloads\FeatureApplication\bin\Debug\netcoreapp2.0\FeatureApplication.runtimeconfig.json
+c:\Users\R1163213\Downloads\FeatureApplication\bin\Debug\netcoreapp2.0\FeatureApplication.runtimeconfig.dev.json
+c:\Users\R1163213\Downloads\FeatureApplication\bin\Debug\netcoreapp2.0\FeatureApplication.dll
+c:\Users\R1163213\Downloads\FeatureApplication\bin\Debug\netcoreapp2.0\FeatureApplication.pdb
+c:\Users\R1163213\Downloads\FeatureApplication\obj\Debug\netcoreapp2.0\FeatureApplication.csproj.CoreCompileInputs.cache
+c:\Users\R1163213\Downloads\FeatureApplication\obj\Debug\netcoreapp2.0\FeatureApplication.AssemblyInfoInputs.cache
+c:\Users\R1163213\Downloads\FeatureApplication\obj\Debug\netcoreapp2.0\FeatureApplication.AssemblyInfo.cs
+c:\Users\R1163213\Downloads\FeatureApplication\obj\Debug\netcoreapp2.0\FeatureApplication.dll
+c:\Users\R1163213\Downloads\FeatureApplication\obj\Debug\netcoreapp2.0\FeatureApplication.pdb
