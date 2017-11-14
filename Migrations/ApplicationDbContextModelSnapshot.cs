@@ -59,7 +59,7 @@ namespace FeatureApplication.Migrations
 
                     b.HasIndex("Name");
 
-                    b.ToTable("AppCustomers");
+                    b.ToTable("Customer","mst");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.Order", b =>
@@ -90,7 +90,7 @@ namespace FeatureApplication.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("AppOrders");
+                    b.ToTable("Order","mst");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.OrderDetail", b =>
@@ -122,7 +122,7 @@ namespace FeatureApplication.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("AppOrderDetails");
+                    b.ToTable("OrderDetail","mst");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.Product", b =>
@@ -175,7 +175,7 @@ namespace FeatureApplication.Migrations
 
                     b.HasIndex("ProductCategoryId");
 
-                    b.ToTable("AppProducts");
+                    b.ToTable("Product","mst");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.ProductCategory", b =>
@@ -206,7 +206,7 @@ namespace FeatureApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AppProductCategories");
+                    b.ToTable("ProductCategory","mst");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.Order", b =>
