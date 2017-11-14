@@ -22,7 +22,7 @@ namespace FeatureApplication.Migrations
 
             modelBuilder.Entity("FeatureApplication.Models.Customer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("CustomerId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
@@ -55,7 +55,7 @@ namespace FeatureApplication.Migrations
 
                     b.Property<DateTime>("UpdatedDate");
 
-                    b.HasKey("Id");
+                    b.HasKey("CustomerId");
 
                     b.HasIndex("Name");
 
@@ -64,7 +64,7 @@ namespace FeatureApplication.Migrations
 
             modelBuilder.Entity("FeatureApplication.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("OrderId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Comments")
@@ -76,6 +76,8 @@ namespace FeatureApplication.Migrations
 
                     b.Property<int>("CustomerId");
 
+                    b.Property<Guid?>("CustomerId1");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime>("DateModified");
@@ -86,16 +88,16 @@ namespace FeatureApplication.Migrations
 
                     b.Property<DateTime>("UpdatedDate");
 
-                    b.HasKey("Id");
+                    b.HasKey("OrderId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId1");
 
                     b.ToTable("Order","mst");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.OrderDetail", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("OrderDetailId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CreatedBy");
@@ -106,7 +108,11 @@ namespace FeatureApplication.Migrations
 
                     b.Property<int>("OrderId");
 
+                    b.Property<Guid?>("OrderId1");
+
                     b.Property<int>("ProductId");
+
+                    b.Property<Guid?>("ProductId1");
 
                     b.Property<int>("Quantity");
 
@@ -116,18 +122,18 @@ namespace FeatureApplication.Migrations
 
                     b.Property<DateTime>("UpdatedDate");
 
-                    b.HasKey("Id");
+                    b.HasKey("OrderDetailId");
 
-                    b.HasIndex("OrderId");
+                    b.HasIndex("OrderId1");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductId1");
 
                     b.ToTable("OrderDetail","mst");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<decimal>("BuyingPrice");
@@ -157,7 +163,11 @@ namespace FeatureApplication.Migrations
 
                     b.Property<int?>("ParentId");
 
+                    b.Property<Guid?>("ParentProductId");
+
                     b.Property<int>("ProductCategoryId");
+
+                    b.Property<Guid?>("ProductCategoryId1");
 
                     b.Property<decimal>("SellingPrice");
 
@@ -167,20 +177,20 @@ namespace FeatureApplication.Migrations
 
                     b.Property<DateTime>("UpdatedDate");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProductId");
 
                     b.HasIndex("Name");
 
-                    b.HasIndex("ParentId");
+                    b.HasIndex("ParentProductId");
 
-                    b.HasIndex("ProductCategoryId");
+                    b.HasIndex("ProductCategoryId1");
 
                     b.ToTable("Product","mst");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.ProductCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("ProductCategoryId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CreatedBy");
@@ -204,7 +214,7 @@ namespace FeatureApplication.Migrations
 
                     b.Property<DateTime>("UpdatedDate");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProductCategoryId");
 
                     b.ToTable("ProductCategory","mst");
                 });
@@ -213,34 +223,30 @@ namespace FeatureApplication.Migrations
                 {
                     b.HasOne("FeatureApplication.Models.Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CustomerId1");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.OrderDetail", b =>
                 {
                     b.HasOne("FeatureApplication.Models.Order", "Order")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OrderId1");
 
                     b.HasOne("FeatureApplication.Models.Product", "Product")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProductId1");
                 });
 
             modelBuilder.Entity("FeatureApplication.Models.Product", b =>
                 {
                     b.HasOne("FeatureApplication.Models.Product", "Parent")
                         .WithMany("Children")
-                        .HasForeignKey("ParentId")
+                        .HasForeignKey("ParentProductId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("FeatureApplication.Models.ProductCategory", "ProductCategory")
                         .WithMany("Products")
-                        .HasForeignKey("ProductCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProductCategoryId1");
                 });
 #pragma warning restore 612, 618
         }

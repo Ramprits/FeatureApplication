@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FeatureApplication.Models
 {
     public class Product : AuditableEntity
     {
-        public int Id { get; set; }
+         [Key]
+        public Guid ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Icon { get; set; }

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
@@ -17,8 +16,7 @@ namespace FeatureApplication.Migrations
                 schema: "mst",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -34,7 +32,7 @@ namespace FeatureApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customer", x => x.Id);
+                    table.PrimaryKey("PK_Customer", x => x.CustomerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,8 +40,7 @@ namespace FeatureApplication.Migrations
                 schema: "mst",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProductCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -56,7 +53,7 @@ namespace FeatureApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductCategory", x => x.Id);
+                    table.PrimaryKey("PK_ProductCategory", x => x.ProductCategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,12 +61,12 @@ namespace FeatureApplication.Migrations
                 schema: "mst",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Comments = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
+                    CustomerId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
@@ -78,14 +75,14 @@ namespace FeatureApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Order", x => x.Id);
+                    table.PrimaryKey("PK_Order", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Order_Customer_CustomerId",
-                        column: x => x.CustomerId,
+                        name: "FK_Order_Customer_CustomerId1",
+                        column: x => x.CustomerId1,
                         principalSchema: "mst",
                         principalTable: "Customer",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CustomerId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,8 +90,7 @@ namespace FeatureApplication.Migrations
                 schema: "mst",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BuyingPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -106,7 +102,9 @@ namespace FeatureApplication.Migrations
                     IsDiscontinued = table.Column<bool>(type: "bit", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     ParentId = table.Column<int>(type: "int", nullable: true),
+                    ParentProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ProductCategoryId = table.Column<int>(type: "int", nullable: false),
+                    ProductCategoryId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     SellingPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     UnitsInStock = table.Column<int>(type: "int", nullable: false),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -114,21 +112,21 @@ namespace FeatureApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Product", x => x.ProductId);
                     table.ForeignKey(
-                        name: "FK_Product_Product_ParentId",
-                        column: x => x.ParentId,
+                        name: "FK_Product_Product_ParentProductId",
+                        column: x => x.ParentProductId,
                         principalSchema: "mst",
                         principalTable: "Product",
-                        principalColumn: "Id",
+                        principalColumn: "ProductId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Product_ProductCategory_ProductCategoryId",
-                        column: x => x.ProductCategoryId,
+                        name: "FK_Product_ProductCategory_ProductCategoryId1",
+                        column: x => x.ProductCategoryId1,
                         principalSchema: "mst",
                         principalTable: "ProductCategory",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ProductCategoryId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,13 +134,14 @@ namespace FeatureApplication.Migrations
                 schema: "mst",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OrderDetailId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false),
+                    OrderId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ProductId = table.Column<int>(type: "int", nullable: false),
+                    ProductId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     UnitPrice = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -150,21 +149,21 @@ namespace FeatureApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderDetail", x => x.Id);
+                    table.PrimaryKey("PK_OrderDetail", x => x.OrderDetailId);
                     table.ForeignKey(
-                        name: "FK_OrderDetail_Order_OrderId",
-                        column: x => x.OrderId,
+                        name: "FK_OrderDetail_Order_OrderId1",
+                        column: x => x.OrderId1,
                         principalSchema: "mst",
                         principalTable: "Order",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "OrderId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_OrderDetail_Product_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_OrderDetail_Product_ProductId1",
+                        column: x => x.ProductId1,
                         principalSchema: "mst",
                         principalTable: "Product",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -174,22 +173,22 @@ namespace FeatureApplication.Migrations
                 column: "Name");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_CustomerId",
+                name: "IX_Order_CustomerId1",
                 schema: "mst",
                 table: "Order",
-                column: "CustomerId");
+                column: "CustomerId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetail_OrderId",
+                name: "IX_OrderDetail_OrderId1",
                 schema: "mst",
                 table: "OrderDetail",
-                column: "OrderId");
+                column: "OrderId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetail_ProductId",
+                name: "IX_OrderDetail_ProductId1",
                 schema: "mst",
                 table: "OrderDetail",
-                column: "ProductId");
+                column: "ProductId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Product_Name",
@@ -198,16 +197,16 @@ namespace FeatureApplication.Migrations
                 column: "Name");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_ParentId",
+                name: "IX_Product_ParentProductId",
                 schema: "mst",
                 table: "Product",
-                column: "ParentId");
+                column: "ParentProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_ProductCategoryId",
+                name: "IX_Product_ProductCategoryId1",
                 schema: "mst",
                 table: "Product",
-                column: "ProductCategoryId");
+                column: "ProductCategoryId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

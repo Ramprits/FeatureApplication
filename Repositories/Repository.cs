@@ -51,7 +51,7 @@ namespace FeatureApplication.Repositories {
             return _entities.SingleOrDefault (predicate);
         }
 
-        public virtual TEntity Get (int id) {
+        public virtual TEntity Get (Guid id) {
             return _entities.Find (id);
         }
 

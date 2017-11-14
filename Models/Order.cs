@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FeatureApplication.Models
 {
     public class Order : AuditableEntity
     {
-        public int Id { get; set; }
+         [Key]
+        public Guid OrderId { get; set; }
         public decimal Discount { get; set; }
         public string Comments { get; set; }
         public DateTime DateCreated { get; set; }
