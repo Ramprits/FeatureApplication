@@ -67,16 +67,16 @@ namespace FeatureApplication.ApplicationContext {
                 var entity = (IAuditableEntity) entry.Entity;
                 DateTime now = DateTime.UtcNow;
 
-                if (entry.State == EntityState.Added) {
-                    entity.CreatedDate = now;
-                    entity.CreatedBy = CurrentUserId;
-                } else {
-                    base.Entry (entity).Property (x => x.CreatedBy).IsModified = false;
-                    base.Entry (entity).Property (x => x.CreatedDate).IsModified = false;
-                }
+                // if (entry.State == EntityState.Added) {
+                //     entity.CreatedDate = now;
+                //     entity.CreatedBy = CurrentUserId;
+                // } else {
+                //     base.Entry (entity).Property (x => x.CreatedBy).IsModified = false;
+                //     base.Entry (entity).Property (x => x.CreatedDate).IsModified = false;
+                // }
 
-                entity.UpdatedDate = now;
-                entity.UpdatedBy = CurrentUserId;
+                // entity.UpdatedDate = now;
+                // entity.UpdatedBy = CurrentUserId;
             }
         }
     }

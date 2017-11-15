@@ -1,7 +1,7 @@
 namespace FeatureApplication.Core {
     public enum Gender {
-        None,
-        Female,
-        Male
+        None = 0,
+        Female = 1,
+        Male = 2
     }
 }

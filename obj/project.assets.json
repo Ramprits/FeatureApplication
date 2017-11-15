@@ -12539,11 +12539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\R1163213\\Downloads\\FeatureApplication\\FeatureApplication.csproj",
+      "projectUniqueName": "c:\\Users\\R1163213\\Downloads\\FeatureApplication\\FeatureApplication.csproj",
       "projectName": "FeatureApplication",
-      "projectPath": "C:\\Users\\R1163213\\Downloads\\FeatureApplication\\FeatureApplication.csproj",
+      "projectPath": "c:\\Users\\R1163213\\Downloads\\FeatureApplication\\FeatureApplication.csproj",
       "packagesPath": "C:\\Users\\R1163213\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\R1163213\\Downloads\\FeatureApplication\\obj\\",
+      "outputPath": "c:\\Users\\R1163213\\Downloads\\FeatureApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

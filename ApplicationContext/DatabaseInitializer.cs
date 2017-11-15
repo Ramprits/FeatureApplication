@@ -48,8 +48,8 @@ namespace FeatureApplication.ApplicationContext {
                     Name = "Ebenezer Monney",
                     Email = "contact@dhanaifruitsmart.com",
                     Gender = Gender.Male,
-                    DateCreated = DateTime.UtcNow,
-                    DateModified = DateTime.UtcNow
+                    // DateCreated = DateTime.UtcNow,
+                    // DateModified = DateTime.UtcNow
                 };
 
                 Customer cust_2 = new Customer {
@@ -59,8 +59,8 @@ namespace FeatureApplication.ApplicationContext {
                     Address = "Some fictional Address, Street 123, Konoha",
                     City = "Konoha",
                     Gender = Gender.Male,
-                    DateCreated = DateTime.UtcNow,
-                    DateModified = DateTime.UtcNow
+                    // DateCreated = DateTime.UtcNow,
+                    // DateModified = DateTime.UtcNow
                 };
 
                 Customer cust_3 = new Customer {
@@ -71,8 +71,8 @@ namespace FeatureApplication.ApplicationContext {
                     Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet",
                     City = "Lorem Ipsum",
                     Gender = Gender.Male,
-                    DateCreated = DateTime.UtcNow,
-                    DateModified = DateTime.UtcNow
+                    // DateCreated = DateTime.UtcNow,
+                    // DateModified = DateTime.UtcNow
                 };
 
                 Customer cust_4 = new Customer {
@@ -83,8 +83,8 @@ namespace FeatureApplication.ApplicationContext {
                     Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet",
                     City = "Lorem Ipsum",
                     Gender = Gender.Male,
-                    DateCreated = DateTime.UtcNow,
-                    DateModified = DateTime.UtcNow
+                    // DateCreated = DateTime.UtcNow,
+                    // DateModified = DateTime.UtcNow
                 };
 
                 ProductCategory prodCat_1 = new ProductCategory {

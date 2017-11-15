@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using FeatureApplication.ApplicationContext;
 using FeatureApplication.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FeatureApplication.Repositories {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class {
-        protected readonly DbContext _context;
+        protected readonly ApplicationDbContext _context;
         protected readonly DbSet<TEntity> _entities;
 
-        public Repository (DbContext context) {
+        public Repository (ApplicationDbContext context) {
             _context = context;
             _entities = context.Set<TEntity> ();
         }

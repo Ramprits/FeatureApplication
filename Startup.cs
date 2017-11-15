@@ -39,7 +39,6 @@ namespace FeatureApplication {
                         ReferenceLoopHandling.Ignore;
                 });
             services.AddScoped<ICustomerRepository, CustomerRepository> ();
-
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer> ();
         }
         public void Configure (IApplicationBuilder app, IHostingEnvironment env) {

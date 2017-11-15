@@ -19,7 +19,6 @@ namespace FeatureApplication.Core {
             List<ApplicationPermission> allPermissions = new List<ApplicationPermission> () {
             ViewUsers,
             ManageUsers,
-
             ViewRoles,
             ManageRoles,
             AssignRoles
